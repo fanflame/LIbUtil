@@ -3,6 +3,7 @@ package com.fanyiran.utils.recycleadapter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -39,7 +40,7 @@ public abstract class RvBaseAdapter<T> extends RecyclerView.Adapter<RvViewHolder
     @Override
     public RvViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         int layout = ItemManager.getInstance().getLayout(viewType);
-        View inflate = View.inflate(viewGroup.getContext(), layout, null);
+        View inflate = LayoutInflater.from(viewGroup.getContext()).inflate(layout, viewGroup, false);
         return new RvViewHolder(inflate);
     }
 
