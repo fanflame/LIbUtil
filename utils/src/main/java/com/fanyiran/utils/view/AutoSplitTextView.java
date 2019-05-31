@@ -9,7 +9,7 @@ import android.widget.TextView;
 /**
  * Created by fanqiang on 2018/12/10.
  */
-public class AutoSplitTextView extends android.support.v7.widget.AppCompatTextView {
+public class AutoSplitTextView extends androidx.appcompat.widget.AppCompatTextView {
     private boolean mEnabled = true;
 
     public AutoSplitTextView(Context context) {

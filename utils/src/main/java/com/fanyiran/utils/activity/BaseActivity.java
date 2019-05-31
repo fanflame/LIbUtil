@@ -1,8 +1,8 @@
 package com.fanyiran.utils.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,12 +18,19 @@ import java.util.concurrent.Callable;
  */
 public abstract class BaseActivity extends AppCompatActivity implements Callable<Object>, AsycTaskUtil.OnTaskListener {
     private static final String TAG = "BaseActivity";
+    private boolean forceWait = true;
+    private long forceWaitTime = 1000;
+    private int defaultDrawable;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getHolderView());
+        setContentView(getWaitView());
         AsycTaskUtil.getInstance().createAsycTask(this,this);
+    }
+
+    public View getWaitView() {
+        return getHolderView();
     }
 
     private ImageView getHolderView() {
@@ -49,10 +56,12 @@ public abstract class BaseActivity extends AppCompatActivity implements Callable
 
     @Override
     public Object call() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (forceWait) {
+            try {
+                Thread.sleep(forceWaitTime);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         long timeBefore = System.currentTimeMillis();
         View v = View.inflate(this,getLayoutId(),null);
@@ -63,5 +72,14 @@ public abstract class BaseActivity extends AppCompatActivity implements Callable
     protected abstract int getLayoutId();
 
     protected abstract void onSetContentViewEnd();
+
+    public void setForceWait(boolean forceWait,long forceWaitTime) {
+        this.forceWait = forceWait;
+        this.forceWaitTime = forceWaitTime;
+    }
+
+    public void setDefaultDrawable(int defaultDrawable) {
+        this.defaultDrawable = defaultDrawable;
+    }
     //</editro-fold>
 }
