@@ -79,4 +79,23 @@ public class FileUtils {
             }
         }
     }
+
+    public static boolean createFile(File file) {
+        if (file == null) {
+            throw new IllegalArgumentException("file is null");
+        }
+        if (file.exists()) {
+            return true;
+        }
+        File parentFile = file.getParentFile();
+        if (!parentFile.exists() && !parentFile.mkdirs()) {
+            return false;
+        }
+        try {
+            return file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
