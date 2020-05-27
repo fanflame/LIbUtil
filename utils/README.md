@@ -1,0 +1,1 @@
+- Looper.mainLooper.setMessageLooper();搞一个记录处理的时间
