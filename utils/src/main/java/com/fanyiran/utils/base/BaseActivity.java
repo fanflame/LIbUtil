@@ -1,11 +1,14 @@
-package com.fanyiran.utils.activity;
+package com.fanyiran.utils.base;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.fanyiran.utils.AsycTaskUtil;
 import com.fanyiran.utils.LogUtil;
@@ -73,7 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Callable
 
     protected abstract void onSetContentViewEnd();
 
-    public void setForceWait(boolean forceWait,long forceWaitTime) {
+    public void setForceWait(boolean forceWait, long forceWaitTime) {
         this.forceWait = forceWait;
         this.forceWaitTime = forceWaitTime;
     }
@@ -82,4 +85,21 @@ public abstract class BaseActivity extends AppCompatActivity implements Callable
         this.defaultDrawable = defaultDrawable;
     }
     //</editro-fold>
+
+    public Fragment replaceNewFragment(int containerId, String fName) {
+        return replaceNewFragment(containerId, fName, null);
+    }
+
+    public Fragment replaceNewFragment(int containerId, String fName, Bundle args) {
+        Fragment fragment = Fragment.instantiate(this, fName);
+        fragment.setArguments(args);
+        replaceFragment(containerId, fragment);
+        return fragment;
+    }
+
+    public void replaceFragment(int containerId, Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(containerId, fragment);
+        fragmentTransaction.commit();
+    }
 }

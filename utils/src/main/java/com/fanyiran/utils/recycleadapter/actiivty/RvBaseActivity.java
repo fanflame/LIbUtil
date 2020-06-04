@@ -3,11 +3,12 @@ package com.fanyiran.utils.recycleadapter.actiivty;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fanyiran.utils.base.mvp.IBaseActivityView;
+import com.fanyiran.utils.base.mvp.base.IPresenter;
 import com.fanyiran.utils.recycleadapter.CreateRvHelper;
 import com.fanyiran.utils.recycleadapter.ICreateRv;
 
@@ -15,7 +16,7 @@ import com.fanyiran.utils.recycleadapter.ICreateRv;
 /**
  * Created by fanqiang on 2019/4/17.
  */
-public abstract class RvBaseActivity extends AppCompatActivity implements ICreateRv {
+public abstract class RvBaseActivity<P extends IPresenter> extends IBaseActivityView<P> implements ICreateRv {
     private CreateRvHelper createRvHelper;
 
     @Override
@@ -31,11 +32,11 @@ public abstract class RvBaseActivity extends AppCompatActivity implements ICreat
 
     @Override
     public RecyclerView.LayoutManager getLayoutManager() {
-        return new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        return new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
     }
 
     @Override
     public RecyclerView.ItemDecoration getItemDecoration() {
-        return new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL) ;
+        return new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL);
     }
 }

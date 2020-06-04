@@ -3,9 +3,11 @@ package com.fanyiran.utils.recycleadapter;
 /**
  * Created by fanqiang on 2019/4/16.
  */
-public interface ItemType<T> {
+interface ItemType<T extends ItemData> {
 
     boolean openClick();
+
+    boolean openLongClick();
 
     int getType();
 
@@ -14,4 +16,8 @@ public interface ItemType<T> {
     void fillContent(RvViewHolder rvViewHolder, int position, T data);
 
     boolean isCurrentType(T data, int position);
+
+    int[] getOnClickViews();
+
+    int[] getOnLongClickViews();
 }

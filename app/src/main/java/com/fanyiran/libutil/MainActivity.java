@@ -1,11 +1,11 @@
 package com.fanyiran.libutil;
 
-import android.os.Environment;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Environment;
 
 import com.fanyiran.utils.FileUtils;
-import com.fanyiran.utils.activity.BaseActivity;
+import com.fanyiran.utils.base.BaseActivity;
+
 import java.io.File;
 public class MainActivity extends BaseActivity {
 

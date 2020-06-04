@@ -1,5 +1,6 @@
 package com.fanyiran.utils.recycleadapter;
 
+
 import androidx.recyclerview.widget.RecyclerView;
 
 /**

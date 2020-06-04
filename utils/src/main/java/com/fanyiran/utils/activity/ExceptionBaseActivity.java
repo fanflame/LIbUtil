@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.fanyiran.utils.R;
+import com.fanyiran.utils.base.BaseActivity;
 
 
 /**

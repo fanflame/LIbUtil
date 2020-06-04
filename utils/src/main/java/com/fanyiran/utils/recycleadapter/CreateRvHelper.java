@@ -21,17 +21,20 @@ public class CreateRvHelper {
     private void initRecycleView() {
         RecyclerView.ItemDecoration itemDecoration = builder.iCreateRv.getItemDecoration();
         RecyclerView.LayoutManager layoutManager = builder.iCreateRv.getLayoutManager();
-        if (recyclerView == null || adapter == null || itemDecoration == null || layoutManager == null) {
+        if (recyclerView == null || adapter == null || layoutManager == null) {
             throw new IllegalArgumentException("初始化失败！");
         }
         recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.addItemDecoration(itemDecoration);
+        if (itemDecoration != null) {
+            recyclerView.addItemDecoration(itemDecoration);
+        }
         recyclerView.setAdapter(adapter);
     }
 
     public static class Builder {
         private ICreateRv iCreateRv;
-        public Builder(ICreateRv iCreateRv){
+
+        public Builder(ICreateRv iCreateRv) {
             this.iCreateRv = iCreateRv;
         }
 

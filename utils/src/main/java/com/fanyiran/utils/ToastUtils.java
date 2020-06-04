@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
+import com.fanyiran.utils.base.ContextHolder;
+
 /**
  * Created by fanqiang on 2018/11/28.
  */
@@ -13,24 +15,24 @@ public class ToastUtils {
     private static Handler handler;
     private static ReuseRunnable reuseRunnable;
 
-    public static void showText(Context context, final String content) {
+    public static void showText(final String content) {
         //TODO 是否可以公用一个toast
-        if(Looper.myLooper().equals(Looper.getMainLooper())){
-            showTextInner(context,content);
-        }else{
-            if(handler == null){
+        if (Looper.myLooper() != null && Looper.myLooper().equals(Looper.getMainLooper())) {
+            showTextInner(ContextHolder.getContext(), content);
+        } else {
+            if (handler == null) {
                 handler = new Handler(Looper.getMainLooper());
             }
-            if(reuseRunnable == null){
+            if (reuseRunnable == null) {
                 reuseRunnable = new ReuseRunnable();
             }
-            reuseRunnable.setContext(context);
+            reuseRunnable.setContext(ContextHolder.getContext());
             reuseRunnable.setContent(content);
             handler.post(reuseRunnable);
         }
     }
 
-    private static class ReuseRunnable implements Runnable{
+    private static class ReuseRunnable implements Runnable {
         public void setContent(String content) {
             this.content = content;
         }
@@ -41,11 +43,13 @@ public class ToastUtils {
 
         private Context context;
         private String content;
+
         @Override
         public void run() {
-            showTextInner(context,content);
+            showTextInner(context, content);
         }
-    };
+    }
+
 
     private static void showTextInner(Context context, String content) {
         if (toast != null) {

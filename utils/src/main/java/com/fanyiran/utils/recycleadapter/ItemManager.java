@@ -21,7 +21,7 @@ public class ItemManager {
         if (itemType == null) {
             return;
         }
-        itemTypeSparseArray.put(itemType.getType(),itemType);
+        itemTypeSparseArray.put(itemType.getType(), itemType);
     }
 
     public int getLayout(int viewType) {
@@ -32,15 +32,15 @@ public class ItemManager {
         return itemTypeSparseArray.get(viewType);
     }
 
-    public <T> int getType(T t, int position) {
+    public <T extends ItemData> int getType(T t, int position) {
         int size = itemTypeSparseArray.size();
         ItemType itemType;
         for (int i = 0; i < size; i++) {
-             itemType = itemTypeSparseArray.valueAt(i);
-            if (itemType.isCurrentType(t,position)) {// NOTE: 比较骚的是这个判断需要具体实现完成  
+            itemType = itemTypeSparseArray.valueAt(i);
+            if (itemType.isCurrentType(t, position)) {// NOTE: 比较骚的是这个判断需要具体实现完成
                 return itemType.getType();
             }
         }
-        throw new IllegalArgumentException("unknow type");
+        throw new IllegalArgumentException("unknow msgType");
     }
 }

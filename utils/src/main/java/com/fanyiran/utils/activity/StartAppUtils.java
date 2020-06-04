@@ -30,7 +30,7 @@ public class StartAppUtils {
             Intent intent = context.getPackageManager().getLaunchIntentForPackage(packetName);
             startAppQuickWithIntent(context,intent);
         }catch(Exception e){
-            ToastUtils.showText(context, "没有安装:"+packetName);
+            ToastUtils.showText("没有安装:" + packetName);
         }
     }
 }

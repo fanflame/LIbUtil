@@ -1,11 +1,11 @@
 package com.fanyiran.utils.recycleadapter;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.fanyiran.utils.R;
 
@@ -15,9 +15,9 @@ import java.util.List;
 /**
  * Created by fanqiang on 2019/4/16.
  */
-public abstract class RvBaseAdapter<T> extends RecyclerView.Adapter<RvViewHolder> {
+public abstract class RvBaseAdapter<T extends ItemData> extends RecyclerView.Adapter<RvViewHolder> {
     private List<T> baseDataList;
-    private RvListener rvListener;
+    private RvListener<T> rvListener;
     private View.OnClickListener onClickListener;
 
     public RvBaseAdapter(List<T> baseDataList) {
@@ -67,7 +67,7 @@ public abstract class RvBaseAdapter<T> extends RecyclerView.Adapter<RvViewHolder
                     int position = (int) v.getTag(R.id.baseapdater_tag_item_position);
                     T baseData = (T) v.getTag(R.id.baseapdater_tag_item_data);
                     if (rvListener != null) {
-                        rvListener.onClick(baseData,position);
+                        rvListener.onClick(v, baseData, position);
                     }
                 }
             };

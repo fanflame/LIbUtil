@@ -1,10 +1,11 @@
 package com.fanyiran.utils.recycleadapter;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.SparseArray;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by fanqiang on 2019/4/16.
@@ -21,9 +22,9 @@ public class RvViewHolder extends RecyclerView.ViewHolder {
 
     public View getView(int viewId) {
         View view = sparseArray.get(viewId);
-        if(view == null){
+        if (view == null) {
             View viewById = itemView.findViewById(viewId);
-            sparseArray.put(viewId,viewById);
+            sparseArray.put(viewId, viewById);
             return viewById;
         }
         return view;

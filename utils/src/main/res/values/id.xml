@@ -2,4 +2,5 @@
 <resources>
     <item name="baseapdater_tag_item_position" type="id"/>
     <item name="baseapdater_tag_item_data" type="id"/>
+    <item name="fake_status_bar_view" type="id" />
 </resources>
