@@ -3,7 +3,7 @@ package com.fanyiran.utils.recycleadapter;
 /**
  * Created by fanqiang on 2019/4/16.
  */
-interface ItemType<T extends ItemData> {
+public interface ItemType<T extends ItemData> {
 
     boolean openClick();
 
