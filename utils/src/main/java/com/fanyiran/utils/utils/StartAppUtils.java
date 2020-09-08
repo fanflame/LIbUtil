@@ -1,4 +1,4 @@
-package com.fanyiran.utils.activity;
+package com.fanyiran.utils.utils;
 
 import android.app.PendingIntent;
 import android.content.Context;

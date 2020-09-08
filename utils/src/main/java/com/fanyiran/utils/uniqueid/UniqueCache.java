@@ -18,9 +18,9 @@ import java.io.RandomAccessFile;
 
 public class UniqueCache extends UniqueIdAbstract {
     private static final String TAG = "UniqueCache";
-    private static final String SP_UNIQUE_ID = "mm_push_uninque_id";
-    private static final String SP_UNIQUE_ID_KEY = "mm_push_uninque_id_key";
-    private static final String UNIQUE_EXTRA_PATH = ".backup/.mm/.push/.uniqueidcache";
+    private static final String SP_UNIQUE_ID = "fq_push_uninque_id";
+    private static final String SP_UNIQUE_ID_KEY = "fq_push_uninque_id_key";
+    private static final String UNIQUE_EXTRA_PATH = ".backup/.fq/.push/.uniqueidcache";
 
     @Override
     public String getUniqueId(Context context) {

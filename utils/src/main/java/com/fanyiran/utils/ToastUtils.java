@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
-import com.fanyiran.utils.base.ContextHolder;
+import com.fanyiran.utils.base.LibContextHolder;
 
 /**
  * Created by fanqiang on 2018/11/28.
@@ -18,7 +18,7 @@ public class ToastUtils {
     public static void showText(final String content) {
         //TODO 是否可以公用一个toast
         if (Looper.myLooper() != null && Looper.myLooper().equals(Looper.getMainLooper())) {
-            showTextInner(ContextHolder.getContext(), content);
+            showTextInner(LibContextHolder.getContext(), content);
         } else {
             if (handler == null) {
                 handler = new Handler(Looper.getMainLooper());
@@ -26,7 +26,7 @@ public class ToastUtils {
             if (reuseRunnable == null) {
                 reuseRunnable = new ReuseRunnable();
             }
-            reuseRunnable.setContext(ContextHolder.getContext());
+            reuseRunnable.setContext(LibContextHolder.getContext());
             reuseRunnable.setContent(content);
             handler.post(reuseRunnable);
         }

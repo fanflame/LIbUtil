@@ -1,6 +1,9 @@
 package com.fanyiran.utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Environment;
+import android.text.TextUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.channels.FileChannel;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by fanqiang on 2019/4/1.
@@ -96,6 +101,88 @@ public class FileUtils {
         } catch (IOException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public static boolean removeFile(String fileName) {
+        if (fileName == null) {
+            return false;
+        }
+        File file = new File(fileName);
+        if (!file.exists()) {
+            return false;
+        }
+        if (file.isFile()) {
+            return file.delete();
+        }
+        return false;
+    }
+
+
+    public static boolean saveBitmap(String path, Bitmap bitmap) {
+        File file = new File(path);
+        if (!file.exists() || file.isDirectory()) {
+            return false;
+        }
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            out.flush();
+            out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public static File createImageFile(Context context) {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File imageFile = null;
+        try {
+            imageFile = File.createTempFile(imageFileName, ".jpg", storageDir);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return imageFile;
+    }
+
+    public static String getFileName(String path) {
+        if (TextUtils.isEmpty(path)) {
+            return null;
+        }
+        String[] split = path.split("/");
+        return split[split.length - 1];
+    }
+
+    public static void copy(File source, File target) {
+        FileInputStream fileInputStream = null;
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileInputStream = new FileInputStream(source);
+            fileOutputStream = new FileOutputStream(target);
+            byte[] buffer = new byte[1024];
+            while (fileInputStream.read(buffer) > 0) {
+                fileOutputStream.write(buffer);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fileInputStream != null) {
+                    fileInputStream.close();
+                }
+                if (fileOutputStream != null) {
+                    fileOutputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.fanyiran.utils.base;
+package com.fanyiran.utils.recycleadapter.actiivty;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fanyiran.utils.base.mvp.IBaseFragmentView;
 import com.fanyiran.utils.recycleadapter.CreateRvHelper;
 import com.fanyiran.utils.recycleadapter.ICreateRv;
 
 
-public abstract class RvBaseFragment extends BaseFragment implements ICreateRv {
+public abstract class IRvBaseFragmentView<P> extends IBaseFragmentView<P> implements ICreateRv {
     private CreateRvHelper createRvHelper;
 
     @Override
@@ -44,6 +45,4 @@ public abstract class RvBaseFragment extends BaseFragment implements ICreateRv {
     public RecyclerView.ItemDecoration getItemDecoration() {
         return new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL);
     }
-
-
 }

@@ -1,4 +1,4 @@
-package com.fanyiran.utils.base;
+package com.fanyiran.utils;
 
 import android.content.Context;
 

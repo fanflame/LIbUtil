@@ -15,4 +15,9 @@ public abstract class ItemTypeAbstract implements ItemType {
     public int[] getOnLongClickViews() {
         return new int[0];
     }
+
+    @Override
+    public int getType() {
+        return TypeIdGenerator.INSTANCE.getTypeId(Class.class.getSimpleName());
+    }
 }

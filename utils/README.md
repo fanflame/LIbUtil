@@ -1,1 +1,3 @@
 - Looper.mainLooper.setMessageLooper();搞一个记录处理的时间
+- 图片加载
+- 网络访问

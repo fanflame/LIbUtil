@@ -5,8 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.fanyiran.utils.ToastUtils;
-import com.fanyiran.utils.base.RvBaseFragment;
 import com.fanyiran.utils.base.mvp.base.IView;
+import com.fanyiran.utils.recycleadapter.actiivty.RvBaseFragment;
 
 public abstract class IRVBaseFragmentView<P> extends RvBaseFragment implements IView {
     protected P presenter;
