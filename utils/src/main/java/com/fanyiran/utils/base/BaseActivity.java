@@ -21,7 +21,7 @@ import java.util.concurrent.Callable;
  */
 public abstract class BaseActivity extends AppCompatActivity implements Callable<Object>, AsycTaskUtil.OnTaskListener {
     private static final String TAG = "BaseActivity";
-    private boolean forceWait = true;
+    private boolean forceWait = false;
     private long forceWaitTime = 1000;
     private int defaultDrawable;
 
@@ -67,9 +67,13 @@ public abstract class BaseActivity extends AppCompatActivity implements Callable
             }
         }
         long timeBefore = System.currentTimeMillis();
-        View v = View.inflate(this,getLayoutId(),null);
+        View v = inflateView();
         LogUtil.v(TAG,"inflate view time:",(System.currentTimeMillis() - timeBefore)+"");
         return v;
+    }
+
+    protected View inflateView() {
+        return View.inflate(this, getLayoutId(), null);
     }
 
     protected abstract int getLayoutId();

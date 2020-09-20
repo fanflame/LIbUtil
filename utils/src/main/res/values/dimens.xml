@@ -5,4 +5,5 @@
     <dimen name="activity_padding">8dp</dimen>
     <dimen name="dialog_padding">8dp</dimen>
     <dimen name="dialog_minwidth">300dp</dimen>
+    <dimen name="toast_tip_size">40dp</dimen>
 </resources>

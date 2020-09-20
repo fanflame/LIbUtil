@@ -4,12 +4,12 @@ import android.view.View;
 
 public class RvListenerImpl implements RvListener {
     @Override
-    public void onClick(View view, ItemData data, int position) {
+    public void onClick(View view, RvItemData data, int position) {
 
     }
 
     @Override
-    public void onLongClick(View view, ItemData data, int position) {
+    public void onLongClick(View view, RvItemData data, int position) {
 
     }
 }

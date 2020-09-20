@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fanyiran.utils.base.mvp.IBaseFragmentView;
+import com.fanyiran.utils.base.mvp.base.IPresenter;
 import com.fanyiran.utils.recycleadapter.CreateRvHelper;
 import com.fanyiran.utils.recycleadapter.ICreateRv;
 
 
-public abstract class IRvBaseFragmentView<P> extends IBaseFragmentView<P> implements ICreateRv {
+public abstract class IRvBaseFragmentView<P extends IPresenter> extends IBaseFragmentView<P> implements ICreateRv {
     private CreateRvHelper createRvHelper;
 
     @Override

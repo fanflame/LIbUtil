@@ -1,8 +1,10 @@
 package com.fanyiran.utils.recycleadapter
 
-object TypeIdGenerator {
-    val typeIdMap by lazy { HashMap<String, Int>() }
-    fun getTypeId(type: String): Int {
-        return typeIdMap.getOrPut(type, { System.currentTimeMillis().toInt() })
-    }
-}
+//
+//object TypeIdGenerator {
+//    private val typeIdMap by lazy { HashMap<String, Int>() }
+//    var value = 0
+//    fun getTypeId(type: Class<ItemData>): Int {
+//        return typeIdMap.getOrPut(type.simpleName, { value++ })
+//    }
+//}

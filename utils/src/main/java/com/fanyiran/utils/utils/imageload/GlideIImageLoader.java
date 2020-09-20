@@ -1,6 +1,5 @@
 package com.fanyiran.utils.utils.imageload;
 
-import android.content.Context;
 import android.net.Uri;
 import android.widget.ImageView;
 
@@ -29,23 +28,23 @@ public class GlideIImageLoader implements IImageLoader {
     }
 
     @Override
-    public void loadImageUri(Context context, Uri uri, int placeHolderResId, ImageView imageView) {
-        Glide.with(context).load(uri).placeholder(placeHolderResId).into(imageView);
+    public void loadImageUri(Uri uri, int placeHolderResId, ImageView imageView) {
+        Glide.with(ContextHolder.getContext()).load(uri).placeholder(placeHolderResId).into(imageView);
     }
 
     @Override
-    public void loadImage(Context context, String url, int placeHolderResId, ImageView imageView) {
-        Glide.with(context).load(url).placeholder(placeHolderResId).into(imageView);
+    public void loadImage(String url, int placeHolderResId, ImageView imageView) {
+        Glide.with(ContextHolder.getContext()).load(url).placeholder(placeHolderResId).into(imageView);
     }
 
     @Override
-    public void loadResImage(Context context, int resid, ImageView imageView) {
-        Glide.with(context).load(resid).into(imageView);
+    public void loadResImage(int resid, ImageView imageView) {
+        Glide.with(ContextHolder.getContext()).load(resid).into(imageView);
     }
 
     @Override
-    public void downloadImage(Context context, String url, final String targetPath, final OnDownloadImageListener onDownloadImageListener) {
-        RequestManager mRequestManager = Glide.with(context);
+    public void downloadImage(String url, final String targetPath, final OnDownloadImageListener onDownloadImageListener) {
+        RequestManager mRequestManager = Glide.with(ContextHolder.getContext());
 
         RequestBuilder<File> mRequestBuilder = mRequestManager.downloadOnly().load(url).listener(new RequestListener<File>() {
             @Override

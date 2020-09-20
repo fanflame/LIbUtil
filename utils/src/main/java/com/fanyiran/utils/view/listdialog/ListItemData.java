@@ -1,19 +1,18 @@
 package com.fanyiran.utils.view.listdialog;
 
-import com.fanyiran.utils.recycleadapter.ItemData;
-import com.fanyiran.utils.recycleadapter.TypeIdGenerator;
+import com.fanyiran.utils.recycleadapter.RvItemData;
 
-public class ListItemData implements ItemData {
+public class ListItemData extends RvItemData {
     private String content;
 
     public ListItemData(String item) {
         this.content = item;
     }
 
-    @Override
-    public int getItemType() {
-        return TypeIdGenerator.INSTANCE.getTypeId(ListDialogItem.class.getName());
-    }
+//    @Override
+//    public int getItemType() {
+//        return TypeIdGenerator.INSTANCE.getTypeId(ListDialogItem.class.getName());
+//    }
 
     public String getContent() {
         return content;

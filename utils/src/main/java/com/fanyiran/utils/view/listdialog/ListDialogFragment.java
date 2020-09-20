@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.fanyiran.utils.R;
 import com.fanyiran.utils.recycleadapter.CreateRvHelper;
 import com.fanyiran.utils.recycleadapter.ICreateRv;
-import com.fanyiran.utils.recycleadapter.ItemData;
 import com.fanyiran.utils.recycleadapter.RvBaseAdapter;
+import com.fanyiran.utils.recycleadapter.RvItemData;
 import com.fanyiran.utils.recycleadapter.RvListenerImpl;
 
 import java.util.ArrayList;
@@ -61,7 +61,7 @@ public class ListDialogFragment extends DialogFragment implements ICreateRv {
             listDialogAdapter = new ListDialogAdapter(listitemdata);
             listDialogAdapter.setRvListener(new RvListenerImpl() {
                 @Override
-                public void onClick(View view, ItemData data, int position) {
+                public void onClick(View view, RvItemData data, int position) {
                     if (onHandleListener != null) {
                         onHandleListener.onItemClick(position);
                     }

@@ -2,6 +2,10 @@
 <resources>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="beauty_bg">#11cccccc</color>
+    <color name="beauty_border">#2DC8B1</color>
     <color name="transparent">#00ffffff</color>
     <color name="gray">#cccccc</color>
+    <color name="activity_bg">#313131</color>
+    <color name="chat_toast_bg">#737373</color>
 </resources>

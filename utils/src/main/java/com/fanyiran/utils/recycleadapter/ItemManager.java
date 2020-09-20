@@ -7,7 +7,7 @@ import android.util.SparseArray;
  */
 public class ItemManager {
     private static final ItemManager ourInstance = new ItemManager();
-    private SparseArray<ItemType> itemTypeSparseArray;
+    private SparseArray<RvItemType> itemTypeSparseArray;
 
     public static ItemManager getInstance() {
         return ourInstance;
@@ -17,7 +17,7 @@ public class ItemManager {
         itemTypeSparseArray = new SparseArray<>();
     }
 
-    public void addItems(ItemType itemType) {
+    public void addItems(RvItemType itemType) {
         if (itemType == null) {
             return;
         }
@@ -28,13 +28,13 @@ public class ItemManager {
         return itemTypeSparseArray.get(viewType).getLayout();
     }
 
-    public ItemType getItemType(int viewType) {
+    public RvItemType getItemType(int viewType) {
         return itemTypeSparseArray.get(viewType);
     }
 
-    public <T extends ItemData> int getType(T t, int position) {
+    public <T extends RvItemData> int getType(T t, int position) {
         int size = itemTypeSparseArray.size();
-        ItemType itemType;
+        RvItemType itemType;
         for (int i = 0; i < size; i++) {
             itemType = itemTypeSparseArray.valueAt(i);
             if (itemType.isCurrentType(t, position)) {// NOTE: 比较骚的是这个判断需要具体实现完成

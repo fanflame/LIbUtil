@@ -14,7 +14,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(getLayoutId(), null);
+        View view = inflateView(inflater);
 //        ButterKnifenife.bind(this, view);
         initView(view);
         return view;
@@ -23,4 +23,8 @@ public abstract class BaseFragment extends Fragment {
     public abstract int getLayoutId();
 
     protected abstract void initView(View view);
+
+    protected View inflateView(LayoutInflater inflater) {
+        return inflater.inflate(getLayoutId(), null);
+    }
 }

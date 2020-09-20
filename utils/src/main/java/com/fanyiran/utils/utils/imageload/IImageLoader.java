@@ -1,17 +1,16 @@
 package com.fanyiran.utils.utils.imageload;
 
-import android.content.Context;
 import android.net.Uri;
 import android.widget.ImageView;
 
 public interface IImageLoader {
-    void loadImage(Context context, String url, int placeHolderResId, ImageView imageView);
+    void loadImage(String url, int placeHolderResId, ImageView imageView);
 
-    void loadImageUri(Context context, Uri uri, int placeHolderResId, ImageView imageView);
+    void loadImageUri(Uri uri, int placeHolderResId, ImageView imageView);
 
-    void loadResImage(Context context, int resid, ImageView imageView);
+    void loadResImage(int resid, ImageView imageView);
 
-    void downloadImage(Context context, String url, final String targetPath, OnDownloadImageListener onDownloadImageListener);
+    void downloadImage(String url, final String targetPath, OnDownloadImageListener onDownloadImageListener);
 
 
     interface OnDownloadImageListener {

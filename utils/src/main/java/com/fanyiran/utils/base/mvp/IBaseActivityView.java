@@ -25,4 +25,11 @@ public abstract class IBaseActivityView<P extends IPresenter> extends BaseActivi
     public void toast(String content) {
         ToastUtils.showText(content);
     }
+
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDetachView();
+        super.onDestroy();
+    }
 }

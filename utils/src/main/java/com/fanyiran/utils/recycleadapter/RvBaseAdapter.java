@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by fanqiang on 2019/4/16.
  */
-public abstract class RvBaseAdapter<T extends ItemData> extends RecyclerView.Adapter<RvViewHolder> {
+public abstract class RvBaseAdapter<T extends RvItemData> extends RecyclerView.Adapter<RvViewHolder> {
     private List<T> baseDataList;
     private RvListener<T> rvListener;
     private View.OnClickListener onClickListener;
@@ -27,13 +27,13 @@ public abstract class RvBaseAdapter<T extends ItemData> extends RecyclerView.Ada
         }
     }
 
-    public void addItemType(ItemType itemType) {
+    public void addItemType(RvItemType itemType) {
         ItemManager.getInstance().addItems(itemType);
     }
 
     @Override
     public int getItemViewType(int position) {
-        return ItemManager.getInstance().getType(baseDataList.get(position),position);
+        return ItemManager.getInstance().getType(baseDataList.get(position), position);
     }
 
     @NonNull
@@ -47,7 +47,7 @@ public abstract class RvBaseAdapter<T extends ItemData> extends RecyclerView.Ada
     @Override
     public void onBindViewHolder(@NonNull RvViewHolder rvViewHolder, int position) {
         int viewType = getItemViewType(position);
-        ItemType item = ItemManager.getInstance().getItemType(viewType);
+        RvItemType item = ItemManager.getInstance().getItemType(viewType);
         rvViewHolder.getItemView().setTag(R.id.baseapdater_tag_item_position,position);
         rvViewHolder.getItemView().setTag(R.id.baseapdater_tag_item_data,baseDataList.get(position));
         if (item.openClick()) {
