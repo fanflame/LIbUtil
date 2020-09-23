@@ -24,12 +24,18 @@ public abstract class BaseActivity extends AppCompatActivity implements Callable
     private boolean forceWait = false;
     private long forceWaitTime = 1000;
     private int defaultDrawable;
+    private boolean asyncCreateView = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getWaitView());
-        AsycTaskUtil.getInstance().createAsycTask(this,this);
+        if (asyncCreateView) {
+            setContentView(getWaitView());
+            AsycTaskUtil.getInstance().createAsycTask(this, this);
+        } else {
+            forceWait = false;
+            onTaskFinished(call());
+        }
     }
 
     public View getWaitView() {
@@ -105,5 +111,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Callable
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(containerId, fragment);
         fragmentTransaction.commit();
+    }
+
+    public void setAsyncCreateView(boolean asyncCreateView) {
+        this.asyncCreateView = asyncCreateView;
     }
 }
