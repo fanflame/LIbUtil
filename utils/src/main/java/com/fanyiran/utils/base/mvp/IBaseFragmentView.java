@@ -14,8 +14,8 @@ public abstract class IBaseFragmentView<P extends IPresenter> extends BaseFragme
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         presenter = (P) getIPresenter();
+        super.onCreate(savedInstanceState);
     }
 
     @Override

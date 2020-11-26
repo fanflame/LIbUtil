@@ -6,6 +6,6 @@
     <color name="beauty_border">#2DC8B1</color>
     <color name="transparent">#00ffffff</color>
     <color name="gray">#cccccc</color>
-    <color name="activity_bg">#313131</color>
+    <color name="activity_bg">#2B2B2B</color>
     <color name="chat_toast_bg">#737373</color>
 </resources>
