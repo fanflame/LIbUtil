@@ -10,9 +10,14 @@ object BmpUtil {
     }
 
     fun getBitmap(path: String, maxWidth: Int): Bitmap {
+        return getBitmap(path,true,maxWidth)
+    }
+
+    fun getBitmap(path: String, premltipliedAlpha:Boolean,maxWidth: Int): Bitmap {
         var options = BitmapFactory.Options()
         options.inPreferredConfig = Bitmap.Config.ARGB_8888
         options.inJustDecodeBounds = true
+        options.inPremultiplied = premltipliedAlpha
         BitmapFactory.decodeFile(path, options)
         var fakeBitmapWidth = options.outWidth
         var sampleSize = 1
